@@ -1,0 +1,14 @@
+
+  {
+    "type": "mongodb",
+    "url": "mongodb+srv://routing:routing22@clusterapiu0.b2xyl.mongodb.net/appNodeInit?retryWrites=true&w=majority",
+    "useUnifiedTopology":true,
+    "useNewUrlParser":true,
+    "synchronize":false,
+    "logging":false,
+    "ssl":true,
+    "entities": [
+      "dist/entity/**/*.js"
+    ]
+  }
+  
