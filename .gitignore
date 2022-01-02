@@ -1,3 +1,4 @@
 node_modules/*
 dist/*
 ormsql
+package-lock.json
