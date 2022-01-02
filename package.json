@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"tsc --Watch\" \"nodemon dist/index.js\"",
-    "build": "tsc -W"
+    "build": "tsc -W \"concurrently \"tsc --Watch\" \"nodemon dist/index.js\""
   },
   "author": "",
   "license": "ISC",
