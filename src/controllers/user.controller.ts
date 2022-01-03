@@ -57,7 +57,3 @@ export const getUserNombre = async (req: Request, res: Response): Promise<Respon
     else
         return res.status(404).json({mgs:"No se encuentra el usuario con ese nombre."})
 }
-
-export const txt = async (req: Request, res: Response): Promise<Response>=>{
-        return res.json({mgs:"Soy una api."})
-}
