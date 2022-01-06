@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import { createConnection } from 'typeorm';
 import userRoutes from './routes/user.routes';
+import loginRoutes from './routes/login.routes';
 import 'reflect-metadata';
 
 const app = express()
@@ -14,7 +15,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 //routes
-app.use(userRoutes);
+app.use(userRoutes, loginRoutes);
 
 
 app.listen(process.env.PORT || 5000);

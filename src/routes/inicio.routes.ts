@@ -1,5 +1,5 @@
 import { Router } from "express";
 const router = Router();
 
-import {txt} from '../controllers/inicio.comtroller'
+import {txt} from '../controllers/inicio.controller'
 router.get('/',txt)

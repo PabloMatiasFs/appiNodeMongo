@@ -1,7 +1,8 @@
-import { Entity, Column, ObjectIdColumn, ObjectID } from "typeorm";
+import { Entity, Column, ObjectIdColumn, ObjectID, BeforeInsert, AfterInsert } from "typeorm";
+import bcrypt from 'bcryptjs';
 
 @Entity({name:"user"})
-export class User {
+export class User{
 
     //@PrimaryGeneratedColumn()
     @ObjectIdColumn()
@@ -15,5 +16,17 @@ export class User {
 
     @Column({ name: 'age'})
     age: number;
+
+    @Column({unique: true , nullable: false})
+    email: String;
+
+    @Column({nullable: false})
+    password: string;
+
+    @BeforeInsert()
+    async generatePasswordHash(): Promise<String> {
+    console.log('GENERATE');
+    return this.password = await bcrypt.hashSync(this.password, bcrypt.genSaltSync(10));
+    }
 
 }
