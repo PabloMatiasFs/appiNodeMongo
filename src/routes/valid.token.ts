@@ -14,7 +14,7 @@ export const  TokenValidation = (req: Request, res: Response, next: NextFunction
     if(!token) 
         return res.status(401).json('Access denied');
 
-    const payload = jwt.verify(token, 'asdfghjklñ') as Ipayload;
+    const payload = jwt.verify(token,  process.env.TOKEN_SECRET || 'asdfghjklñ') as Ipayload;
 
     console.log(payload);
 

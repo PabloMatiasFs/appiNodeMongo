@@ -12,7 +12,7 @@ export const Singin = async (req: Request, res: Response): Promise<Response>=>{
     if(user){
         const pass = await bcrypt.compare(req.body.password, user.password);
         if(pass){
-            const token: string = jwt.sign({_id: user.id},'asdfghjklñ',{
+            const token: string = jwt.sign({_id: user.id}, process.env.TOKEN_SECRET || 'asdfghjklñ',{
                 expiresIn: 60 * 60 * 12
             });
             return res.header('auth-token', token).json(user);
@@ -27,7 +27,7 @@ export const singUp = async (req: Request, res: Response): Promise<Response>=>{
         const newUser = getRepository(User).create(req.body);
         const result = await getRepository(User).save(newUser);
         const user = await getRepository(User).findOne({email: req.body.email});
-        const token: string = jwt.sign({_id: user?.id},'asdfghjklñ',{
+        const token: string = jwt.sign({_id: user?.id}, process.env.TOKEN_SECRET || 'asdfghjklñ',{
             expiresIn: 60 * 60 * 12
         });
 
