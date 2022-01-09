@@ -15,7 +15,7 @@ export const Singin = async (req: Request, res: Response): Promise<Response>=>{
             const token: string = jwt.sign({_id: user.id}, process.env.TOKEN_SECRET || 'asdfghjklñ',{
                 expiresIn: 60 * 60 * 12
             });
-            return res.header('auth-token', token).json(user);
+            return res.header('auth-token', token).json({Id: user?.id, Apellido: user?.lastName, Nombre: user?.firstName , Edad: user?.age, Email: user?.email});
         }else
             return res.status(404).json({mgs:"Contraseña incorrecta."});
     }else
@@ -31,7 +31,7 @@ export const singUp = async (req: Request, res: Response): Promise<Response>=>{
             expiresIn: 60 * 60 * 12
         });
 
-        return res.header('auth-token', token).json(result);  
+        return res.header('auth-token', token).json({Id: user?.id, Apellido: user?.lastName, Nombre: user?.firstName , Edad: user?.age, Email: user?.email});  
 
     } catch (error) {
         return  res.status(400).json({msg: error});
