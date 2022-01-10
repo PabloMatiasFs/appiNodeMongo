@@ -14,7 +14,8 @@ export const txt = async (req: Request, res: Response): Promise<Response>=>{
                                 password: "password"
                                 },
                             respuesta:{
-                                header:"auth-token(key , value)"
+                                header:"auth-token(key , value)",
+                                objetoRespuestaJson:"Datos del usuario sin la Password"
                                 }
                             };
 
@@ -27,7 +28,8 @@ export const txt = async (req: Request, res: Response): Promise<Response>=>{
                                 password: "password"
                                 },
                             respuesta:{
-                                header:"auth-token(key , value)"
+                                header:"auth-token(key , value)",
+                                objetoRespuestaJson:"Datos del usuario sin la Password"
                                 }
                             };
 
@@ -37,7 +39,7 @@ export const txt = async (req: Request, res: Response): Promise<Response>=>{
                             Url:"https://api-rest-ndjs.herokuapp.com/userlogin",
                             header:"auth-token(key , value)",
                             respuesta:{
-                                objetoRespuestaJson:"Datos del usuario"
+                                objetoRespuestaJson:"Datos del usuario sin la Password"
                                 }
                             };
     const importante ={msg:"Los Token tienen solo una duracion de 1HS"}
