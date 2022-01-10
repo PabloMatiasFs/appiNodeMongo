@@ -14,14 +14,22 @@ export const  TokenValidation = (req: Request, res: Response, next: NextFunction
     if(!token) 
         return res.status(401).json('Access denied');
 
-    const payload = jwt.verify(token,  process.env.TOKEN_SECRET || 'asdfghjklñ') as Ipayload;
+    jwt.verify(token,  process.env.TOKEN_SECRET || 'asdfghjklñ' , function(err, decoded) {
+        if(err){
+            return res.status(403).json('token Expired');
+        }else{
 
-    console.log(payload);
+            const payload = jwt.verify(token,  process.env.TOKEN_SECRET || 'asdfghjklñ' ) as Ipayload;
+            
+            console.log(payload);
+    
+            req.userId = payload._id;
+    
+            console.log(payload._id);
+    
+            next();
+        }
 
-    req.userId = payload._id;
-
-    console.log(payload._id);
-
-    next();
+      });
 
 }
