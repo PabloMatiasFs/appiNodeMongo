@@ -18,15 +18,15 @@ export class User{
     age: number;
 
     @Column({unique: true , nullable: false})
-    email: String;
+    email: string;
 
     @Column({nullable: false})
     password: string;
 
     @BeforeInsert()
-    async generatePasswordHash(): Promise<String> {
-    console.log('GENERATE');
-    return this.password = await bcrypt.hashSync(this.password, bcrypt.genSaltSync(10));
+    async generatePasswordHash(): Promise<string> {
+        console.log('GENERATE');
+        return this.password = await bcrypt.hashSync(this.password, bcrypt.genSaltSync(10));
     }
 
 }
